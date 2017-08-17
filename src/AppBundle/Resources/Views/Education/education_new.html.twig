@@ -1,0 +1,67 @@
+{% extends '@App/Layout/layout_.html.twig' %}
+
+{% block content %}
+
+    <!-- Header -->
+    <header class="w3-container w3-theme w3-padding" id="myHeader">
+        <i onclick="w3_open()" class="fa fa-bars w3-xlarge w3-button w3-theme"></i>
+        <div class="w3-center">
+            <h4>Education</h4>
+        </div>
+    </header>
+
+    <div class="w3-padding w3-white w3-display-container">
+        <br>
+
+        <h1>New Qualification</h1>
+    <div class="w3-responsive w3-card-4">
+        {{ form_start(qualificationForm) }}
+        <table class="w3-table w3-striped w3-bordered">
+            <tr>
+                <td>
+                    <b>{{ form_label(qualificationForm.name) }}</b><br>
+                    {{ form_errors(qualificationForm.name) }}
+                    {{ form_widget(qualificationForm.name) }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>{{ form_label(qualificationForm.type) }}</b><br>
+                    {{ form_errors(qualificationForm.type) }}
+                    {{ form_widget(qualificationForm.type) }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>{{ form_label(qualificationForm.subject) }}</b><br>
+                    {{ form_errors(qualificationForm.subject) }}
+                    {{ form_widget(qualificationForm.subject) }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>{{ form_label(qualificationForm.grade) }}</b><br>
+                    {{ form_errors(qualificationForm.grade) }}
+                    {{ form_widget(qualificationForm.grade) }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>{{ form_label(qualificationForm.startDate) }}</b><br>
+                    {{ form_errors(qualificationForm.startDate) }}
+                    {{ form_widget(qualificationForm.startDate) }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>{{ form_label(qualificationForm.endDate) }}</b><br>
+                    {{ form_errors(qualificationForm.endDate) }}
+                    {{ form_widget(qualificationForm.endDate) }}
+                </td>
+            </tr>
+        </table>
+        <button type="submit" class="w3-button w3-theme">Save</button>
+        {{ form_end(qualificationForm) }}
+    </div>
+
+{% endblock %}

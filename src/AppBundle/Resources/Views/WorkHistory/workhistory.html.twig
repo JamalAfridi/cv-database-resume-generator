@@ -1,0 +1,59 @@
+{% extends '@App/Layout/layout_.html.twig' %}
+
+{% block content %}
+
+    <!-- Header -->
+    <header class="w3-container w3-theme w3-padding" id="myHeader">
+        <i onclick="w3_open()" class="fa fa-bars w3-xlarge w3-button w3-theme"></i>
+        <div class="w3-center">
+            <h4>Work History</h4>
+        </div>
+    </header>
+
+    <div class="w3-padding w3-white w3-display-container">
+
+        <br>
+
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") or is_granted("ROLE_ADMIN") %}
+
+            <div class="w3-center">
+            <h1>Work History</h1>
+            </div>
+            {% for workhistory in app.user.workhistory %}
+                <div class="w3-responsive w3-card-4">
+                    <table class="w3-table w3-striped w3-bordered">
+                        <tr class="w3-theme">
+                            <td>Name</td>
+                            <td>Job Title</td>
+                            <td>Responsibilities</td>
+                            <td>Start Date</td>
+                            <td>End Date</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>{{ workhistory.name }}</td>
+                            <td>{{ workhistory.jobTitle }}</td>
+                            <td>{{ workhistory.responsibilities }}</td>
+                            <td>{{ workhistory.startDate|date('Y-m-d') }}</td>
+                            <td>{{ workhistory.endDate|date('Y-m-d') }}</td>
+                            <td><a href="{{ path('workhistory_edit', {id: workhistory.id}) }}">Edit</a></td>
+                            <td><a href="{{ path('workhistory_delete', {id: workhistory.id}) }}">Delete</a></td>
+                        </tr>
+                    </table>
+                </div>
+                <br>
+            {% endfor %}
+
+            <br>
+            <table>
+                <tr>
+                    <td>
+                        <a href="{{ path('workhistory_new') }}" class="w3-button w3-theme">Add</a>
+                    </td>
+                </tr>
+            </table>
+
+        {% endif %}
+    </div>
+{% endblock %}

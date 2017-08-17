@@ -1,0 +1,82 @@
+{% extends '@App/Layout/layout_.html.twig' %}
+
+{% block content %}
+
+    <!-- Header -->
+    <header class="w3-container w3-theme w3-padding" id="myHeader">
+        <i onclick="w3_open()" class="fa fa-bars w3-xlarge w3-button w3-theme"></i>
+        <div class="w3-center">
+            <h4>Personal</h4>
+        </div>
+    </header>
+
+    <div class="w3-padding w3-white w3-display-container">
+
+        <br>
+
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") or is_granted("ROLE_ADMIN") %}
+
+            <div class="w3-center">
+                <h1>Basic</h1>
+            </div>
+
+            <div class="w3-responsive w3-card-4">
+                <table class="w3-table w3-striped w3-bordered">
+                    <tr class="w3-theme">
+                        <td>First Name</td>
+                        <td>Last Name</td>
+                        <td>Phone Number</td>
+                        <td>Email</td>
+                        <td>City</td>
+                        <td>Country</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>{{ app.user.firstName }}</td>
+                        <td>{{ app.user.lastName }}</td>
+                        <td>{{ app.user.phone }}</td>
+                        <td>{{ app.user.email }}</td>
+                        <td>{{ app.user.city }}</td>
+                        <td>{{ app.user.country }}</td>
+                        <td><a href="{{ path('personal_edit', {id: app.user.id}) }}">Edit</a></td>
+                    </tr>
+                </table>
+            </div>
+
+            <br>
+            <hr>
+
+            <div class="w3-center">
+            <h1>Interests</h1>
+            </div>
+            {% for interest in app.user.interests %}
+                <div class="w3-responsive w3-card-4">
+                    <table class="w3-table w3-striped w3-bordered">
+                        <tr class="w3-theme">
+                            <td>Description</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>{{ interest.description }}</td>
+                            <td><a href="{{ path('personal_edit_interest', {id: interest.id}) }}">Edit</a></td>
+                            <td><a href="{{ path('personal_delete_interest', {id: interest.id}) }}">Delete</a></td>
+                        </tr>
+                    </table>
+                    <br>
+                </div>
+                <br>
+            {% endfor %}
+
+            <br>
+            <table>
+                <tr>
+                    <td>
+                        <a href="{{ path('personal_new_interest') }}" class="w3-button w3-theme">Add</a>
+                    </td>
+                </tr>
+            </table>
+
+        {% endif %}
+    </div>
+{% endblock %}

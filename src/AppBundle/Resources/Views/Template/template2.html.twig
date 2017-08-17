@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>One Page Resume</title>
+
+    <style>
+        div.container {  width: 100%;  }
+        header, footer {  padding: 1em;  color: white;  background-color: black;  clear: left;  text-align: center;  }
+        nav {  float: left;  max-width: 200px;  margin: 0;  padding: 1em;  padding-top: 20px;  }
+        article {  margin-left: 170px;  padding-left: 40px;  padding-top: 20px;  overflow: hidden;  }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <header>
+        <h1>{{ app.user.firstName }} {{ app.user.lastName }}</h1>
+        <p>Tel: {{ app.user.phone }}</p>
+        <p>Email: {{ app.user.email }}</p>
+        <p>{{ app.user.city }}, {{ app.user.country }}</p>
+    </header>
+
+    <nav>
+        <h3><u>Skills</u></h3>
+        {% for skills in app.user.skills %}
+        <p>{{ skills.description }} - {{ skills.competency }}</p>
+        {% endfor %}
+        <hr>
+
+        <h3><u>Interests</u></h3>
+        {% for interest in app.user.interests %}
+        <p>{{  interest.description }}</p>
+        {% endfor %}
+    </nav>
+
+    <article>
+        <h3><u>Work Experience</u></h3>
+        {% for workhistory in app.user.workhistory %}
+        <p><b>{{ workhistory.jobTitle }} / {{ workhistory.name }}</b></p>
+        <p>{{ workhistory.startDate|date('Y-m-d') }} - {{ workhistory.endDate|date('Y-m-d') }}</p>
+        <p>{{ workhistory.responsibilities }}</p>
+        {% endfor %}
+
+        <hr>
+
+        <h3><u>Education</u></h3>
+        {% for qualification in app.user.qualifications %}
+        <p><b>{{ qualification.name }}</b></p>
+        <p>{{ qualification.startDate|date('Y-m-d') }} - {{ qualification.endDate|date('Y-m-d') }}</p>
+        <p>{{ qualification.type }} - {{ qualification.subject }} - {{ qualification.grade }}</p>
+        {% endfor %}
+    </article>
+
+    <footer>REFERENCES AVAILABLE UPON REQUEST</footer>
+
+</div>
+
+</body>
+</html>

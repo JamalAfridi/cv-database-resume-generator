@@ -1,0 +1,204 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Institution
+ *
+ * @ORM\Table(name="institution")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\InstitutionRepository")
+ */
+class Institution
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255, nullable=true)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="address", type="string", length=255, nullable=true)
+     */
+    private $address;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="startDate", type="date", nullable=true)
+     */
+    private $startDate;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="endDate", type="date", nullable=true)
+     */
+    private $endDate;
+
+    /**
+     * One Institution has Many Qualifications.
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Qualification", mappedBy="institution")
+     */
+    private $qualifications;
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return Institution
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set address
+     *
+     * @param string $address
+     *
+     * @return Institution
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
+
+        return $this;
+    }
+
+    /**
+     * Get address
+     *
+     * @return string
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * Set startDate
+     *
+     * @param \DateTime $startDate
+     *
+     * @return Institution
+     */
+    public function setStartDate($startDate)
+    {
+        $this->startDate = $startDate;
+
+        return $this;
+    }
+
+    /**
+     * Get startDate
+     *
+     * @return \DateTime
+     */
+    public function getStartDate()
+    {
+        return $this->startDate;
+    }
+
+    /**
+     * Set endDate
+     *
+     * @param \DateTime $endDate
+     *
+     * @return Institution
+     */
+    public function setEndDate($endDate)
+    {
+        $this->endDate = $endDate;
+
+        return $this;
+    }
+
+    /**
+     * Get endDate
+     *
+     * @return \DateTime
+     */
+    public function getEndDate()
+    {
+        return $this->endDate;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->qualifications = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add qualification
+     *
+     * @param \AppBundle\Entity\Qualification $qualification
+     *
+     * @return Institution
+     */
+    public function addQualification(\AppBundle\Entity\Qualification $qualification)
+    {
+        $this->qualifications[] = $qualification;
+
+        return $this;
+    }
+
+    /**
+     * Remove qualification
+     *
+     * @param \AppBundle\Entity\Qualification $qualification
+     */
+    public function removeQualification(\AppBundle\Entity\Qualification $qualification)
+    {
+        $this->qualifications->removeElement($qualification);
+    }
+
+    /**
+     * Get qualifications
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getQualifications()
+    {
+        return $this->qualifications;
+    }
+}

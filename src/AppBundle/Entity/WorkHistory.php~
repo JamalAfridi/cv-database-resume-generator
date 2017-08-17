@@ -1,0 +1,174 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * WorkHistory
+ *
+ * @ORM\Table(name="work_history")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\WorkHistoryRepository")
+ */
+class WorkHistory
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="jobTitle", type="string", length=255, nullable=true)
+     */
+    private $jobTitle;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="responsibilities", type="string", length=255, nullable=true)
+     */
+    private $responsibilities;
+
+    /**
+     * One Workhistory has Many companies.
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Company", mappedBy="workhistory")
+     */
+    private $companies;
+
+    /**
+     * Many Workhistory have One User.
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="workhistory")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $user;
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set jobTitle
+     *
+     * @param string $jobTitle
+     *
+     * @return WorkHistory
+     */
+    public function setJobTitle($jobTitle)
+    {
+        $this->jobTitle = $jobTitle;
+
+        return $this;
+    }
+
+    /**
+     * Get jobTitle
+     *
+     * @return string
+     */
+    public function getJobTitle()
+    {
+        return $this->jobTitle;
+    }
+
+    /**
+     * Set responsibilities
+     *
+     * @param string $responsibilities
+     *
+     * @return WorkHistory
+     */
+    public function setResponsibilities($responsibilities)
+    {
+        $this->responsibilities = $responsibilities;
+
+        return $this;
+    }
+
+    /**
+     * Get responsibilities
+     *
+     * @return string
+     */
+    public function getResponsibilities()
+    {
+        return $this->responsibilities;
+    }
+
+    /**
+     * Set company
+     *
+     * @param string $company
+     *
+     * @return WorkHistory
+     */
+    public function setCompany($company)
+    {
+        $this->company = $company;
+
+        return $this;
+    }
+
+    /**
+     * Get company
+     *
+     * @return string
+     */
+    public function getCompany()
+    {
+        return $this->company;
+    }
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->companies = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add company
+     *
+     * @param \AppBundle\Entity\Company $company
+     *
+     * @return WorkHistory
+     */
+    public function addCompany(\AppBundle\Entity\Company $company)
+    {
+        $this->companies[] = $company;
+
+        return $this;
+    }
+
+    /**
+     * Remove company
+     *
+     * @param \AppBundle\Entity\Company $company
+     */
+    public function removeCompany(\AppBundle\Entity\Company $company)
+    {
+        $this->companies->removeElement($company);
+    }
+
+    /**
+     * Get companies
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCompanies()
+    {
+        return $this->companies;
+    }
+}

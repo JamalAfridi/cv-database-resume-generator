@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<title>Home</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-teal.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+<body>
+
+<!-- Side Navigation -->
+<nav class="w3-sidebar w3-bar-block w3-card-2 w3-animate-left w3-center" style="display:none" id="mySidebar">
+    <h1 class="w3-xxxlarge w3-text-theme">Side Navigation</h1>
+    <button class="w3-bar-item w3-button" onclick="w3_close()">Close <i class="fa fa-remove"></i></button>
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") or is_granted("ROLE_ADMIN") %}
+    <a href="{{ path('template') }}" class="w3-bar-item w3-button">Templates</a>
+    <a href="{{ path('personal') }}" class="w3-bar-item w3-button">Personal</a>
+    <a href="{{ path('education') }}" class="w3-bar-item w3-button">Education</a>
+    <a href="{{ path('workhistory') }}" class="w3-bar-item w3-button">Work History</a>
+    <a href="{{ path('skills') }}" class="w3-bar-item w3-button">Skills</a>
+    {% endif %}
+    {% if is_granted("ROLE_ADMIN") %}
+    <a href="{{ path('admin_users') }}" class="w3-bar-item w3-button">Users</a>
+    {% endif %}
+    <a href="{{ path('fos_user_security_login') }}" class="w3-bar-item w3-button">Login</a>
+    <a href="{{ path('fos_user_security_logout') }}" class="w3-bar-item w3-button">Logout</a>
+    {% if is_granted("IS_AUTHENTICATED_ANONYMOUSLY") %}
+    <a href="{{ path('fos_user_registration_register') }}" class="w3-bar-item w3-button">Register</a>
+    {% endif %}
+</nav>
+
+<!-- Header -->
+<header class="w3-container w3-theme w3-padding" id="myHeader">
+    <i onclick="w3_open()" class="fa fa-bars w3-xlarge w3-button w3-theme"></i>
+    <div class="w3-center">
+        <h4>ONLINE CV DATABASE AND AUTOMATED RESUME GENERATOR</h4>
+        <h1 class="w3-xxxlarge w3-animate-bottom">BUILT BY JAMAL AFRIDI</h1>
+        <div class="w3-padding-32">
+            <button class="w3-btn w3-xlarge w3-dark-grey w3-hover-light-grey" onclick="document.getElementById('id01').style.display='block'" style="font-weight:900;">ABOUT</button>
+        </div>
+    </div>
+</header>
+
+<!-- Modal -->
+<div id="id01" class="w3-modal">
+    <div class="w3-modal-content w3-card-4 w3-animate-top">
+        <header class="w3-container w3-theme-l1">
+        <span onclick="document.getElementById('id01').style.display='none'"
+              class="w3-button w3-display-topright">×</span>
+            <h4>ONLINE CV DATABASE AND AUTOMATED RESUME GENERATOR</h4>
+        </header>
+        <div class="w3-padding">
+            <p>The aim of this work is to deliver an online CV generation service that will automatically generate
+                tailored resumes. Users will be able to select from a variety of resume templates, which will then
+                be populated with relevant details stored in the system’s database, and served back to the user as a PDF</p>
+        </div>
+        <footer class="w3-container w3-theme-l1">
+            <p>Jamal Afridi <i class="fa fa-smile-o"></i></p>
+        </footer>
+    </div>
+</div>
+
+    <div class="w3-border" >
+        <div class="w3-bar w3-theme">
+            <button class="w3-bar-item w3-button testbtn w3-padding-16" onclick="openSection(event,'Templates')">Templates</button>
+            <button class="w3-bar-item w3-button testbtn w3-padding-16" onclick="openSection(event,'Personal')">Personal</button>
+            <button class="w3-bar-item w3-button testbtn w3-padding-16" onclick="openSection(event,'Education')">Education</button>
+            <button class="w3-bar-item w3-button testbtn w3-padding-16" onclick="openSection(event,'Work History')">Work History</button>
+            <button class="w3-bar-item w3-button testbtn w3-padding-16" onclick="openSection(event,'Skills')">Skills</button>
+        </div>
+
+        <div id="Templates" class="w3-container section w3-animate-opacity">
+            <h2>Templates</h2>
+            <p>About the Templates:</p>
+            <p>Here is where you will choose from a number of templates which your finished resume will be formatted in. You will
+            have the option to preview the resume in a specific template and if that is the one you want then you can also download
+            it in a PDF form.</p>
+        </div>
+
+        <div id="Personal" class="w3-container section w3-animate-opacity">
+            <h2>Personal</h2>
+            <p>About the Personal Section:</p>
+            <p>Here is where you will include personal information for your CV. This includes information about yourself such as
+            first name, last name, phone number, the city you are from and the country. You will also include a description of
+            your interests here.</p>
+        </div>
+
+        <div id="Education" class="w3-container section w3-animate-opacity">
+            <h2>Education</h2>
+            <p>About the Education Section:</p>
+            <p>Here is where you will include education related information for your CV. This includes information about your
+            previous qualifications that you have earned such as the type of qualification, subject studied and the grade received
+            as well as the institution that awarded you the qualification which will include the name of the institution and the
+            start and end dates that you attended the institution.</p>
+        </div>
+
+        <div id="Work History" class="w3-container section w3-animate-opacity">
+            <h2>Work History</h2>
+            <p>About the Work History Section:</p>
+            <p>Here is where you will include any work experience for your CV. This includes information about your previous jobs
+            such as the job title and responsibilities as well as the company you worked for which will be the company name and
+            the start and end dates that you worked there.</p>
+        </div>
+
+        <div id="Skills" class="w3-container section w3-animate-opacity">
+            <h2>Skills</h2>
+            <p>About the Skills Section:</p>
+            <p>Here is where you will include information about your skills for your CV. This includes information such as a
+            description of the skill followed by the competency level related to that skill.</p>
+        </div>
+    </div>
+
+</div>
+
+<!-- Script for Sidebar, Tabs, Accordions, Progress bars and slideshows -->
+<script>
+    // Side navigation
+    function w3_open() {
+        var x = document.getElementById("mySidebar");
+        x.style.width = "100%";
+        x.style.fontSize = "40px";
+        x.style.paddingTop = "10%";
+        x.style.display = "block";
+    }
+    function w3_close() {
+        document.getElementById("mySidebar").style.display = "none";
+    }
+
+    // Tabs
+    function openSection(evt, sectionName) {
+        var i;
+        var x = document.getElementsByClassName("section");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        var activebtn = document.getElementsByClassName("testbtn");
+        for (i = 0; i < x.length; i++) {
+            activebtn[i].className = activebtn[i].className.replace(" w3-dark-grey", "");
+        }
+        document.getElementById(sectionName).style.display = "block";
+        evt.currentTarget.className += " w3-dark-grey";
+    }
+
+    var mybtn = document.getElementsByClassName("testbtn")[0];
+    mybtn.click();
+
+
+    function plusDivs(n) {
+        slideIndex = slideIndex + n;
+        showDivs(slideIndex);
+    }
+
+    function showDivs(n) {
+        var x = document.getElementsByClassName("mySlides");
+        if (n > x.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = x.length} ;
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        x[slideIndex-1].style.display = "block";
+    }
+
+    showDivs(1);
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+{% extends '@App/Layout/layout_.html.twig' %}
+
+{% block content %}
+
+    <!-- Header -->
+    <header class="w3-container w3-theme w3-padding" id="myHeader">
+        <i onclick="w3_open()" class="fa fa-bars w3-xlarge w3-button w3-theme"></i>
+        <div class="w3-center">
+            <h4>Work History</h4>
+        </div>
+    </header>
+
+    <div class="w3-padding w3-white w3-display-container">
+        <br>
+
+        <h1>Edit Work History</h1>
+
+     <div class="w3-responsive w3-card-4">
+        {{ form_start(workhistoryForm) }}
+        <table class="w3-table w3-striped w3-bordered">
+            <tr>
+                <td>
+                    <b>{{ form_label(workhistoryForm.name) }}</b><br>
+                    {{ form_errors(workhistoryForm.name) }}
+                    {{ form_widget(workhistoryForm.name) }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>{{ form_label(workhistoryForm.jobTitle) }}</b><br>
+                    {{ form_errors(workhistoryForm.jobTitle) }}
+                    {{ form_widget(workhistoryForm.jobTitle) }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>{{ form_label(workhistoryForm.responsibilities) }}</b><br>
+                    {{ form_errors(workhistoryForm.responsibilities) }}
+                    {{ form_widget(workhistoryForm.responsibilities) }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>{{ form_label(workhistoryForm.startDate) }}</b><br>
+                    {{ form_errors(workhistoryForm.startDate) }}
+                    {{ form_widget(workhistoryForm.startDate) }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>{{ form_label(workhistoryForm.endDate) }}</b><br>
+                    {{ form_errors(workhistoryForm.endDate) }}
+                    {{ form_widget(workhistoryForm.endDate) }}
+                </td>
+            </tr>
+        </table>
+        <button type="submit" class="w3-button w3-theme">Save</button>
+        {{ form_end(workhistoryForm) }}
+        </div>
+    </div>
+
+{% endblock %}

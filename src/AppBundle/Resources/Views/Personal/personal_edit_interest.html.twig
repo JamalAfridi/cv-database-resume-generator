@@ -1,0 +1,37 @@
+{% extends '@App/Layout/layout_.html.twig' %}
+{% use "form_div_layout.html.twig" %}
+
+{% block content %}
+
+    <!-- Header -->
+    <header class="w3-container w3-theme w3-padding" id="myHeader">
+        <i onclick="w3_open()" class="fa fa-bars w3-xlarge w3-button w3-theme"></i>
+        <div class="w3-center">
+            <h4>Personal</h4>
+        </div>
+    </header>
+
+    <div class="w3-padding w3-white w3-display-container">
+        <br>
+
+        <h1>Edit Interest</h1>
+
+        <div class="w3-responsive w3-card-4">
+            {{ form_start(personalForm) }}
+            <table class="w3-table w3-striped w3-bordered">
+                <tr>
+                    <td>
+                        <b>{{ form_label(personalForm.description) }}</b><br>
+                        {{ form_errors(personalForm.description) }}
+                        {{ form_widget(personalForm.description) }}
+                    </td>
+                </tr>
+            </table>
+            <button type="submit" class="w3-button w3-theme">Save</button>
+            {{ form_end(personalForm) }}
+        </div>
+    </div>
+
+
+
+{% endblock %}

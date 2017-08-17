@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<title>Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
+</style>
+<body class="w3-light-grey">
+
+<!-- Page Container -->
+<div class="w3-content w3-margin-top" style="max-width:1400px;">
+
+    <!-- The Grid -->
+    <div class="w3-row-padding">
+
+        <!-- Left Column -->
+        <div class="w3-third">
+
+            <!-- Personal -->
+            <div class="w3-white w3-text-grey w3-card-4">
+                <div class="w3-container">
+                        <h1>{{ app.user.firstName }} {{ app.user.lastName }}</h1>
+                    <hr>
+                </div>
+                <div class="w3-container">
+                    <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>{{ app.user.city }},
+                        {{ app.user.country }}</p>
+                    <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>{{ app.user.email }}</p>
+                    <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i>{{ app.user.phone }}</p>
+                    <hr>
+
+                    <!-- Skills -->
+                    <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Skills</b></p>
+                    {% for skills in app.user.skills %}
+                        <p>{{ skills.description }} - {{ skills.competency }}</p>
+                    {% endfor %}
+                    <hr>
+
+                    <!-- Interests -->
+                    <p class="w3-large w3-text-theme"><b><i class="fa fa-globe fa-fw w3-margin-right w3-text-teal"></i>Interests</b></p>
+                    {% for interest in app.user.interests %}
+                        <p>{{ interest.description }}</p>
+                    {% endfor %}
+                    <br>
+                </div>
+            </div><br>
+
+            <!-- End Left Column -->
+        </div>
+
+
+        <!-- Right Column -->
+        <div class="w3-twothird">
+
+            <!-- Work Experience -->
+            <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
+                <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Work Experience</h2>
+
+                {% for workhistory in app.user.workhistory %}
+                <div class="w3-container">
+                    <h5 class="w3-opacity"><b>{{ workhistory.jobTitle }} / {{ workhistory.name }}</b></h5>
+                    <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>{{ workhistory.startDate|date('Y-m-d') }} - {{ workhistory.endDate|date('Y-m-d') }}</h6>
+                    <p>{{ workhistory.responsibilities }}</p>
+                    <hr>
+                </div>
+                {% endfor %}
+
+            </div>
+
+            <!-- Education -->
+            <div class="w3-container w3-card-2 w3-white">
+                <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Education</h2>
+
+                {% for qualification in app.user.qualifications %}
+                <div class="w3-container">
+                    <h5 class="w3-opacity"><b>{{ qualification.name }}</b></h5>
+                    <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>{{ qualification.startDate|date('Y-m-d') }} - {{ qualification.endDate|date('Y-m-d') }}</h6>
+                    <p>{{ qualification.type }}</p>
+                    <p>{{ qualification.subject }} - {{ qualification.grade }}</p>
+                    <hr>
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- End Right Column -->
+        </div>
+
+        <!-- End Grid -->
+    </div>
+
+    <!-- End Page Container -->
+</div>
+
+<footer class="w3-container w3-teal w3-center w3-margin-top">
+    <p>RFERENCES AVAILABLE UPON REQUEST</p>
+
+</footer>
+
+</body>
+</html>

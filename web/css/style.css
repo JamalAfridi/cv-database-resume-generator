@@ -1,0 +1,30 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    float: left;
+}
+
+a {
+    padding: 8px;
+    display: block;
+}
+
+table, th, td {
+    font-family: Arial, sans-serif;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #DDDDDD;
+    padding: 8px;
+    text-align: left;
+}
+
+tr:nth-child(even){
+    background-color: #DDDDDD;
+}
+

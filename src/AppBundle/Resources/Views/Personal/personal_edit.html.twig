@@ -1,0 +1,62 @@
+{% extends '@App/Layout/layout_.html.twig' %}
+
+{% block content %}
+
+    <!-- Header -->
+    <header class="w3-container w3-theme w3-padding" id="myHeader">
+        <i onclick="w3_open()" class="fa fa-bars w3-xlarge w3-button w3-theme"></i>
+        <div class="w3-center">
+            <h4>Personal</h4>
+        </div>
+    </header>
+
+    <div class="w3-padding w3-white w3-display-container">
+        <br>
+
+        <h1>Edit User</h1>
+
+        <div class="w3-responsive w3-card-4">
+        {{ form_start(personalForm) }}
+        <table class="w3-table w3-striped w3-bordered">
+            <tr>
+                <td>
+                    <b>{{ form_label(personalForm.firstName) }}</b><br>
+                    {{ form_errors(personalForm.firstName) }}
+                    {{ form_widget(personalForm.firstName) }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>{{ form_label(personalForm.lastName) }}</b><br>
+                    {{ form_errors(personalForm.lastName) }}
+                    {{ form_widget(personalForm.lastName) }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>{{ form_label(personalForm.phone) }}</b><br>
+                    {{ form_errors(personalForm.phone) }}
+                    {{ form_widget(personalForm.phone) }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>{{ form_label(personalForm.city) }}</b><br>
+                    {{ form_errors(personalForm.city) }}
+                    {{ form_widget(personalForm.city) }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>{{ form_label(personalForm.country) }}</b><br>
+                    {{ form_errors(personalForm.country) }}
+                    {{ form_widget(personalForm.country) }}
+                </td>
+            </tr>
+        </table>
+        <button type="submit" class="w3-button w3-theme">Save</button>
+        {{ form_end(personalForm) }}
+        </div>
+    </div>
+
+{% endblock %}

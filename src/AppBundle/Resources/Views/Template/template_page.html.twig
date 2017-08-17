@@ -1,0 +1,126 @@
+{% extends '@App/Layout/layout_.html.twig' %}
+
+{% block content %}
+
+    <!-- Header -->
+    <header class="w3-container w3-theme w3-padding" id="myHeader">
+        <i onclick="w3_open()" class="fa fa-bars w3-xlarge w3-button w3-theme"></i>
+        <div class="w3-center">
+            <h4>Templates</h4>
+        </div>
+    </header>
+
+    <div class="w3-padding w3-white w3-display-container">
+
+        <br>
+
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") or is_granted("ROLE_ADMIN") %}
+
+            <div class="w3-container w3-center">
+                <hr>
+                <h3>Templates</h3>
+            </div>
+
+            <div class="w3-row-padding">
+
+                <div class="w3-third">
+                    <div class="w3-card-2">
+                        <img src="{{ asset('images/template1.png') }}" alt="Template" style="width:100%">
+                        <div class="w3-container">
+                            <br>
+                            <p><b>Template 1</b></p>
+                            <div class="w3-center">
+                                <br>
+                                <a href="{{ path('template1') }}" class="w3-button w3-theme">Preview</a>
+                                <a href="{{ path('template_pdf1') }}" class="w3-button w3-theme">Download</a>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w3-third">
+                    <div class="w3-card-4">
+                        <img src="{{ asset('images/template2.png') }}" alt="Template" style="width:100%">
+                        <div class="w3-container">
+                            <br>
+                            <p><b>Template 2</b></p>
+                            <div class="w3-center">
+                                <br>
+                                <a href="{{ path('template2') }}" class="w3-button w3-theme">Preview</a>
+                                <a href="{{ path('template_pdf2') }}" class="w3-button w3-theme">Download</a>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w3-third">
+                    <div class="w3-card-4">
+                        <img src="{{ asset('images/template3.png') }}" alt="Template" style="width:100%">
+                        <div class="w3-container">
+                            <br>
+                            <p><b>Template 3</b></p>
+                            <div class="w3-center">
+                                <br>
+                                <a href="{{ path('template3') }}" class="w3-button w3-theme">Preview</a>
+                                <a href="{{ path('template_pdf3') }}" class="w3-button w3-theme">Download</a>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w3-third">
+                    <div class="w3-card-4">
+                        <img src="{{ asset('images/template2.png') }}" alt="Template" style="width:100%">
+                        <div class="w3-container">
+                            <br>
+                            <p><b>Template 2</b></p>
+                            <div class="w3-center">
+                                <br>
+                                <a href="{{ path('template2') }}" class="w3-button w3-theme">Preview</a>
+                                <a href="{{ path('template_pdf2') }}" class="w3-button w3-theme">Download</a>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w3-third">
+                    <div class="w3-card-4">
+                        <img src="{{ asset('images/template2.png') }}" alt="Template" style="width:100%">
+                        <div class="w3-container">
+                            <br>
+                            <p><b>Template 2</b></p>
+                            <div class="w3-center">
+                                <br>
+                                <a href="{{ path('template2') }}" class="w3-button w3-theme">Preview</a>
+                                <a href="{{ path('template_pdf2') }}" class="w3-button w3-theme">Download</a>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w3-third">
+                    <div class="w3-card-4">
+                        <img src="{{ asset('images/template2.png') }}" alt="Template" style="width:100%">
+                        <div class="w3-container">
+                            <br>
+                            <p><b>Template 2</b></p>
+                            <div class="w3-center">
+                                <br>
+                                <a href="{{ path('template2') }}" class="w3-button w3-theme">Preview</a>
+                                <a href="{{ path('template_pdf2') }}" class="w3-button w3-theme">Download</a>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        {% endif %}
+    </div>
+{% endblock %}

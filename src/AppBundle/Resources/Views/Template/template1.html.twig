@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>One Page Resume</title>
+
+    <style>
+        #container{  width: 100%;  }
+        #header{  background-color: ;  margin-top: 10px;  margin-bottom: 10px;  padding-top: 20px;  padding-bottom: 20px;  text-align: center;  }
+        #body{  background-color: ;  margin-top: 10px;  margin-bottom: 10px;  padding: 20px;  }
+        #footer{  background-color: ;  margin-top: 10px;  margin-bottom: 10px;  padding-top: 20px;  padding-bottom: 20px;  text-align: center;  }
+        p{  margin: 5px;  }
+    </style>
+</head>
+
+<body>
+<div id="container">
+    <div id="header">
+        <h1>{{ app.user.firstName }} {{ app.user.lastName }}</h1>
+        <p>{{ app.user.city }}, {{ app.user.country }}</p>
+        <p>Email: {{ app.user.email }} </p>
+        <p>Tel: {{ app.user.phone }}</p>
+    </div>
+
+    <div id="body">
+        <!-- Employment History -->
+        <h2><u>Employment History</u></h2>
+        {% for workhistory in app.user.workhistory %}
+            <p><b>{{ workhistory.name }}</b></p>
+            <p>{{ workhistory.startDate|date('Y-m-d') }} - {{ workhistory.endDate|date('Y-m-d') }}</p>
+            <p>Duties: {{ workhistory.jobTitle }}</p>
+            <p>{{ workhistory.responsibilities }}</p>
+            <br>
+        {% endfor %}
+
+        <!-- Education -->
+        <h2><u>Education</u></h2>
+        {% for qualification in app.user.qualifications %}
+            <p><b>{{ qualification.name }}</b></p>
+            <p>{{ qualification.startDate|date('Y-m-d') }} - {{ qualification.endDate|date('Y-m-d') }}</p>
+            <p>{{ qualification.type }}</p>
+            <p>{{ qualification.subject }} - {{ qualification.grade }}</p>
+            <br>
+        {% endfor %}
+
+        <!-- Skills -->
+        <h2><u>Skills</u></h2>
+        {% for skills in app.user.skills %}
+            <p>{{ skills.description }} - {{ skills.competency }}</p>
+        {% endfor %}
+
+        <!-- Interests -->
+        <h2><u>Interests</u></h2>
+        {% for interest in app.user.interests %}
+            <p>{{ interest.description }}</p>
+            <br>
+        {% endfor %}
+    </div>
+
+    <div id="footer">
+        <p><b>REFERENCES AVAILABLE UPON REQUEST</b></p>
+    </div>
+</div>
+</body>
+</html>
